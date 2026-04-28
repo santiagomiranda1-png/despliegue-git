@@ -18,7 +18,7 @@ from google import genai
 
 
 def format_role(role: str) -> str:
-    return "Tú" if role == "user" else "Chatbot"
+    return "Usted" if role == "user" else "Chatbot"
 
 
 def hash_password(password: str) -> str:
@@ -87,7 +87,7 @@ class ChatRequest(BaseModel):
 
 
 # ── Base de datos ─────────────────────────────────────────
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///database.db")
 engine = create_engine(DATABASE_URL)
 
 
@@ -211,8 +211,13 @@ def chat(conv_id: int, body: ChatRequest, session: SessionDep):
     
     # Preparamos el historial
     gemini_history = [
+<<<<<<< HEAD
         {"role": msg.role, "parts": [{"text": msg.content}]}
         for msg in history[:-1]
+=======
+        {"role": msg.role, "parts": [{"text": "Respondeme como si fueras mi bro del alma" + msg.content}]}
+        for msg in history[:-1]  # todo excepto el último (recién guardado)
+>>>>>>> 7863de4fdddc3190b71492c89f903a531d8a0184
     ]
 
     # CONFIGURACIÓN DE PERSONALIDAD
