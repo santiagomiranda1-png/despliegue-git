@@ -206,30 +206,16 @@ def chat(conv_id: int, body: ChatRequest, session: SessionDep):
         .order_by(Message.created_at)
     ).all()
 
-   # 4. Llamar a Gemini con todo el historial y System Instruction
+    # 4. Llamar a Gemini con todo el historial
     client = genai.Client()
-    
-    # Preparamos el historial
     gemini_history = [
-<<<<<<< HEAD
-        {"role": msg.role, "parts": [{"text": msg.content}]}
-        for msg in history[:-1]
-=======
         {"role": msg.role, "parts": [{"text": "Respondeme como si fueras mi bro del alma" + msg.content}]}
         for msg in history[:-1]  # todo excepto el último (recién guardado)
->>>>>>> 7863de4fdddc3190b71492c89f903a531d8a0184
     ]
 
-    # CONFIGURACIÓN DE PERSONALIDAD
-    # Cambia este texto por cómo quieres que se comporte (ej. sarcástico, formal, pirata, etc.)
-    system_instruction = "di meow despues de cada palabra"
-
     response = client.models.generate_content(
-        model="gemini-2.0-flash", # Asegúrate de usar una versión válida
+        model="gemini-3-flash-preview",
         contents=gemini_history + [{"role": "user", "parts": [{"text": body.message}]}],
-        config={
-            "system_instruction": system_instruction
-        }
     )
 
     # 5. Guardar respuesta del modelo
