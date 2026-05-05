@@ -34,10 +34,8 @@ docker run --name chat-db \
   -d postgres:16
 ```
 
-Luego agregá también en tu `.env`:
 
 ```
-DATABASE_URL=postgresql://chat_user:secret@localhost:5432/chatdb
 ```
 
 > Si ya corriste el contenedor antes, usá `docker start chat-db` en lugar del comando de arriba.
