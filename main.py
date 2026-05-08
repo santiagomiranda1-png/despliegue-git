@@ -12,6 +12,8 @@ from dotenv import load_dotenv
 import hashlib
 import os
 
+#
+
 load_dotenv()
 
 from google import genai

@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: CI/CD
+name: CI
 
 on:
   push:
@@ -14,6 +14,7 @@ jobs:
   test:
     name: Unit tests
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
