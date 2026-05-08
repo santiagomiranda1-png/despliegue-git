@@ -1,7 +1,25 @@
-# 7d6e22c636b0_se_añade_tabla_usuarios_y_columna_en_.py
+"""se añade tabla usuarios y columna en conversations para login
+
+Revision ID: 7d6e22c636b0
+Revises: 
+Create Date: 2026-04-16 18:14:06.339424
+
+"""
+from typing import Sequence, Union
+
+from alembic import op
+import sqlalchemy as sa
+
+
+# revision identifiers, used by Alembic.
+revision: str = '7d6e22c636b0'
+down_revision: Union[str, Sequence[str], None] = None
+branch_labels: Union[str, Sequence[str], None] = None
+depends_on: Union[str, Sequence[str], None] = None
+
 
 def upgrade() -> None:
-    # 1. Crear tabla user
+    # Crear tabla user
     op.create_table(
         'user',
         sa.Column('id', sa.Integer(), nullable=False),
@@ -12,7 +30,7 @@ def upgrade() -> None:
     )
     op.create_index(op.f('ix_user_username'), 'user', ['username'], unique=True)
 
-    # 2. Crear tabla conversation
+    # Crear tabla conversation
     op.create_table(
         'conversation',
         sa.Column('id', sa.Integer(), nullable=False),
@@ -23,7 +41,7 @@ def upgrade() -> None:
         sa.PrimaryKeyConstraint('id'),
     )
 
-    # 3. Crear tabla message
+    # Crear tabla message
     op.create_table(
         'message',
         sa.Column('id', sa.Integer(), nullable=False),
