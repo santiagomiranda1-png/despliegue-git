@@ -1,7 +1,6 @@
-# claseLlm
+# claseLlm shion
 
-Repositorio de clases prácticas sobre desarrollo de software con LLMs.
-
+Repositorio de clases prácticas sobre desarrollo de software con LLMs. 
 ## Clases
 
 1. **FastAPI como backend** — endpoints REST, integración con LLM, frontend con HTML, CSS y JavaScript
